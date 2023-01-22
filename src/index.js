@@ -8,8 +8,8 @@ const setupAndStartServer = async ()=>{
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended : true}));
 
-    
-    // const PORT = process.env.PORT;
+
+     // const PORT = process.env.PORT;
     app.listen(PORT, ()=> {
         console.log("server started on port", PORT);
     })
