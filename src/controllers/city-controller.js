@@ -33,8 +33,8 @@ const get =  async (req, res) =>{
         })
     } catch (error) { 
         console.log(error);
-        return req.status(500).json({
-            data : response,
+        return res.status(500).json({
+            data : {},
             success : false,
             message : "not able to get a city",
             err: error
@@ -44,7 +44,7 @@ const get =  async (req, res) =>{
 
 const destroy = async(req, res) =>{
     try {
-        const city = await cityService.deleteCity(req.params.id);
+        const response  = await cityService.deleteCity(req.params.id);
         return res.status(200).json({
             data : response,
             success : true,
