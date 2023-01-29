@@ -65,9 +65,9 @@ const destroy = async(req, res) =>{
 
 const update = async (req, res) =>{
     try {
-        const city = await cityService.updateCity(req.params.id , req.body);
-        return res.status(200).jason({
-            data : city,
+        const response = await cityService.updateCity(req.params.id , req.body);
+        return res.status(200).json({
+            data : response,
             success : true,
             message : "successfully updated a city",
             err : {}
@@ -75,10 +75,10 @@ const update = async (req, res) =>{
         
     } catch (error) {
         console.log(error);
-        res.status(500).jaosn({
+        res.status(500).json({
             data : {},
             success: false,
-            message : "not aable to update a city",
+            message : "not able to update a city",
             err : error
         })
     }
