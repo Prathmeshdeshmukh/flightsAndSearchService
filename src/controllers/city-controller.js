@@ -42,6 +42,26 @@ const get =  async (req, res) =>{
     }
 }
 
+const getAll = async (req , res) =>{
+     try {
+        const cities= await cityService.getAllCities();
+        res.status(200).json({
+            data : cities,
+            success : true,
+            message : "successfully fetched all cities",
+            err : {}
+        })
+     } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            data : {},
+            success : false,
+            message : "not able to fetch all cities",
+            err : error
+        })
+     }
+}
+
 const destroy = async(req, res) =>{
     try {
         const response  = await cityService.deleteCity(req.params.id);
@@ -88,5 +108,6 @@ module.exports = {
     create,
     update,
     destroy,
-    get
+    get,
+    getAll
 }
