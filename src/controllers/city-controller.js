@@ -4,6 +4,16 @@ const cityService = new CityService();
 
 const create = async (req, res) =>{
     try {
+        if (req.body.batch){
+           const response = cityService.bulkCreate(req.body.batch);
+            return res.status(201).json({
+                data : response,
+                success : true,
+                message : 'successfully created a cities',
+                err: {}
+            })
+          }
+        //   else{
        const city = await cityService.createCity(req.body);
        return res.status(201).json({
         data : city,

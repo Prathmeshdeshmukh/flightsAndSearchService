@@ -2,8 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const {PORT} = require('./config/serverConfig');
-// const CityRepository = require("./repository/city-repository");
+const CityRepository = require("./repository/city-repository");
 const ApiRoutes = require('./routes/index');
+// const {Airport , City} = require('./models/index');
+const db = require('./models/index');
 
 const setupAndStartServer = async ()=>{
     //create the express obj
@@ -12,9 +14,20 @@ const setupAndStartServer = async ()=>{
     app.use(bodyParser.urlencoded({extended : true}));
 
     app.use('/api' , ApiRoutes );
-     // const PORT = process.env.PORT;
-    app.listen(PORT, ()=> {
+    
+    app.listen(PORT, async ()=> {
         console.log("server started on port", PORT);
+
+        // if(process.env.SYNC_DB){
+        //     db.sequelize.sync({alter : true});
+        // }
+    //     const newAirport = await Airport.findOne({
+    //         where :{
+    //             id: 10
+    //     }
+    // })
+    //     await city.addAirport(newAirport);
+    // console.log(city , airports);
     })
 }
 
