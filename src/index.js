@@ -21,13 +21,8 @@ const setupAndStartServer = async ()=>{
         // if(process.env.SYNC_DB){
         //     db.sequelize.sync({alter : true});
         // }
-    //     const newAirport = await Airport.findOne({
-    //         where :{
-    //             id: 10
-    //     }
-    // })
-    //     await city.addAirport(newAirport);
-    // console.log(city , airports);
+
+
     })
 }
 
